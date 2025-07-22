@@ -77,7 +77,7 @@ export const deleteTask = async (req: Request, res: Response) => {
  * @returns {object} 200 - Array of tasks
  */
 export const searchTasks = async (req: Request, res: Response) => {
-  const { search } = req.query;
-  const [rows] = await db.execute('SELECT * FROM tasks WHERE title LIKE ?', [`%${search}%`]);
+  const { title } = req.query;
+  const [rows] = await db.execute('SELECT * FROM tasks WHERE title LIKE ?', [`%${title}%`]);
   res.status(200).json(rows);
 };
